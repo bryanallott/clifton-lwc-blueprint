@@ -26,11 +26,49 @@ const athletes = [
 // For very small static site, data may be embedded on the page.
 // Otherwise load it from `./assets/data.json` and then render.
 function loadData() {
-  return fetch('./assets/data.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Failed to load data.json ' + r.status);
-      return r.json();
-    })
+  const baseFromWindow = (typeof window !== 'undefined' && window.baseurl) ? window.baseurl : '';
+  // If a <base> tag is present its href will be used by relative URLs. Try a few fallbacks.
+  const baseFromTag = (function(){
+    const b = document.querySelector('base');
+    return b && b.getAttribute('href') ? b.getAttribute('href').replace(/\/$/, '') : '';
+  })();
+  const candidates = [];
+  if (baseFromWindow) candidates.push(baseFromWindow.replace(/\/$/, '') + '/assets/data.json');
+  if (baseFromTag) candidates.push(baseFromTag.replace(/\/$/, '') + '/assets/data.json');
+  // relative paths (will resolve against <base> if present)
+  candidates.push('assets/data.json', './assets/data.json');
+
+  // also try deriving from the current script location (useful if app.js is served from assets/js/)
+  (function(){
+    try {
+      let scriptSrc = (document.currentScript && document.currentScript.src) || '';
+      if (!scriptSrc) {
+        const s = document.getElementsByTagName('script');
+        for (let i = s.length-1; i>=0; i--) {
+          if (s[i].src && s[i].src.indexOf('app.js') !== -1) { scriptSrc = s[i].src; break; }
+        }
+      }
+      if (scriptSrc) {
+        const u = new URL(scriptSrc, location.href);
+        const dir = u.origin + u.pathname.replace(/\/[^\/]*$/, '');
+        candidates.push(dir.replace(/\/$/, '') + '/data.json');
+        candidates.push(dir.replace(/\/$/, '') + '/assets/data.json');
+      }
+    } catch(e) { /* ignore */ }
+  })();
+
+  function tryNext(i) {
+    if (i >= candidates.length) return Promise.reject(new Error('All data.json fetch attempts failed'));
+    const path = candidates[i];
+    return fetch(path)
+      .then(r => {
+        if (!r.ok) return tryNext(i+1);
+        return r.json();
+      })
+      .catch(() => tryNext(i+1));
+  }
+
+  return tryNext(0)
     .then(json => { window.data = json; render(); })
     .catch(err => { console.error('data load error', err); });
 }
