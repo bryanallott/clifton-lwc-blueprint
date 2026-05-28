@@ -26,7 +26,7 @@ const athletes = [
 // For very small static site, data may be embedded on the page.
 // Otherwise load it from `assets/data.json` and then render.
 function loadData() {
-  return fetch('/assets/data.json')
+  return fetch('assets/data.json')
     .then(r => {
       if (!r.ok) throw new Error('Failed to load data.json ' + r.status);
       return r.json();
