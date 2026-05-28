@@ -1,0 +1,314 @@
+{
+  "sprint": [
+    {
+      "vol": "Cross-train freely",
+      "int": "Low",
+      "sessions": [
+        {"type": "Gym", "desc": "Strength foundation - hip hinge, squat, single-leg work", "note": "2× per week. No max effort."},
+        {"type": "Beach/run", "desc": "Easy jogs on soft sand, 20–30 min. Feel the surface.", "note": "1× per week. Effort should feel conversational."},
+        {"type": "Recovery", "desc": "Swim or cycle for active recovery. Nothing sport-specific.", "note": "Keep it genuinely easy."},
+        {"type": "Mobility", "desc": "Ankle and hip work. Hamstring loading under fatigue.", "note": "Daily 10 min."}
+      ]
+    },
+    {
+      "vol": "Build aerobic base",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Gym", "desc": "Progressive overload - posterior chain priority. RDLs, box jumps, sled.", "note": "3× per week. Volume increases weekly."},
+        {"type": "Soft sand", "desc": "Easy aerobic runs 30–50 min. Also short hill repeats on sand.", "note": "2–3× per week. Never going to threshold yet."},
+        {"type": "Speed work", "desc": "Starts and acceleration drills, 30–40m. Not race pace.", "note": "1× per week. Focus is mechanics not time."},
+        {"type": "Conditioning", "desc": "Aerobic interval work - beach flags circuits, 400–800m tempo runs.", "note": "1× per week. RPE 6–7 max."}
+      ]
+    },
+    {
+      "vol": "Threshold intensity",
+      "int": "Hard",
+      "sessions": [
+        {"type": "Soft sand tempo", "desc": "6–8 × 60m at 90% effort. Full rest between.", "note": "2× per week. This is where it starts to hurt."},
+        {"type": "Speed endurance", "desc": "3–4 × 90m at near-race pace. 4 min recovery.", "note": "1× per week only. Don't cook legs mid-week."},
+        {"type": "Gym", "desc": "Maintain strength, reduce volume. Power focus - jumps, sprint-specific lifts.", "note": "2× per week, down from 3."},
+        {"type": "Race sim", "desc": "90m with a start and turn sequence. Timed runs.", "note": "Build confidence in the shape of the race."}
+      ]
+    },
+    {
+      "vol": "Race pace conditioning",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Sprint repeats", "desc": "8–10 × 90m at race pace. Full recovery - 5 min between.", "note": "Working toward your target set of 12."},
+        {"type": "Speed sessions", "desc": "Short flags starts, 15m acceleration work, false-start simulation.", "note": "2× per week."},
+        {"type": "Gym", "desc": "Power maintenance only. Reduced volume. No DOMS going into race week.", "note": "1× per week."},
+        {"type": "Technical", "desc": "Turning mechanics, sand reading, heat race simulation.", "note": "Practise race-day routine."}
+      ]
+    },
+    {
+      "vol": "Taper & peak",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Sprint sharpener", "desc": "4–5 × 90m, race pace, full rest. Leave feeling fresh not smashed.", "note": "Once in comp week. Not daily."},
+        {"type": "Activation", "desc": "Short burst starts, flags practice. 15–20 min total.", "note": "Daily pre-comp morning."},
+        {"type": "Rest", "desc": "Serious rest. Sleep and nutrition now do more work than training.", "note": "Trust the build."},
+        {"type": "Race prep", "desc": "Visualise heats. Walk the course. Understand the draw.", "note": "Mental as physical."}
+      ]
+    }
+  ],
+  "swim": [
+    {
+      "vol": "Active recovery, skills",
+      "int": "Low",
+      "sessions": [
+        {"type": "Pool", "desc": "Technique focus. Drill sets, catch work. 2–3km easy.", "note": "2× per week. Feel the stroke, not the clock."},
+        {"type": "Ocean", "desc": "Easy beach swims, 800–1200m. Comfortable pace.", "note": "1× per week if water is accessible."},
+        {"type": "Strength", "desc": "Lat pull, shoulder stability, rotator cuff. Not heavy.", "note": "2× per week."},
+        {"type": "Cross-train", "desc": "Anything non-swimming. Bike, run, whatever you enjoy.", "note": "Keep body moving, mind fresh."}
+      ]
+    },
+    {
+      "vol": "Aerobic volume build",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Long ocean swim", "desc": "Steady 1500–3000m in open water. Navigation practice.", "note": "Weekly. Build distance week on week."},
+        {"type": "Pool sets", "desc": "Aerobic pyramid sets - 200, 400, 800, 400, 200. Low rest.", "note": "2× per week."},
+        {"type": "Technique", "desc": "Sighting drills, catch-up drill, open water stroke tempo.", "note": "Every swim has a tech component."},
+        {"type": "Strength", "desc": "Pull-up progressions, core, hip flexor loading.", "note": "2–3× per week."}
+      ]
+    },
+    {
+      "vol": "Threshold sets",
+      "int": "Hard",
+      "sessions": [
+        {"type": "Threshold swims", "desc": "4–6 × 400m at CSS pace. 30–45 sec rest.", "note": "1–2× per week."},
+        {"type": "Open water tempo", "desc": "Continuous 2–3km at hard-sustainable effort. Track pace.", "note": "Once weekly."},
+        {"type": "Race-pace repeats", "desc": "8 × 200m at target 400m pace. This builds you toward your set.", "note": "Bridge toward Phase 4 load."},
+        {"type": "Strength", "desc": "Maintain pulling strength. No new movements.", "note": "2× per week."}
+      ]
+    },
+    {
+      "vol": "8 × 400m progression",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Full race set", "desc": "8 × 400m open water. Pace per rep should be race-goal pace.", "note": "Once weekly only. Full week to recover."},
+        {"type": "Speed work", "desc": "Short fast reps - 6 × 100m at faster than race pace.", "note": "Mid-week filler."},
+        {"type": "Long swim", "desc": "Single continuous 2–3km to maintain aerobic ceiling.", "note": "Easy pace, not pushing."},
+        {"type": "Recovery swim", "desc": "800m easy after hard days. Flush the legs.", "note": "Active recovery only."}
+      ]
+    },
+    {
+      "vol": "Taper & sharpen",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Shortened rep set", "desc": "4–5 × 400m, race pace. Reduce volume, keep speed.", "note": "Once only in taper."},
+        {"type": "Speed", "desc": "4 × 100m fast. Keep neuromuscular sharpness.", "note": "Mid-week."},
+        {"type": "Ocean prep", "desc": "Short open-water session. Practice sighting the comp course if possible.", "note": "Course familiarity matters."},
+        {"type": "Rest", "desc": "Two full rest days before comp day.", "note": "Arrive rested."}
+      ]
+    }
+  ],
+  "ski": [
+    {
+      "vol": "Off-paddle, base movement",
+      "int": "Low",
+      "sessions": [
+        {"type": "Gym", "desc": "Lat, rotator cuff, core stability. Paddling posture work.", "note": "2× per week."},
+        {"type": "Easy paddle", "desc": "Flat water, casual. 45–60 min. No intervals.", "note": "1× per week if available."},
+        {"type": "Cross-train", "desc": "Cycling for aerobic base without shoulder load.", "note": "1–2× per week."},
+        {"type": "Mobility", "desc": "Thoracic rotation, hip flexor, shoulder CARs daily.", "note": "10 min daily."}
+      ]
+    },
+    {
+      "vol": "Long paddle base",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Long aerobic paddle", "desc": "60–90 min continuous. Z2 effort - can hold a conversation.", "note": "Weekly. Increase by ~10% per week."},
+        {"type": "Interval paddle", "desc": "6–8 × 3 min moderate effort, 2 min easy. Volume-based.", "note": "1× per week."},
+        {"type": "Technical", "desc": "Stroke efficiency, catch timing, boat trim practice.", "note": "Every session has a focus cue."},
+        {"type": "Gym", "desc": "Paddle-specific pull work, rotational power development.", "note": "2× per week."}
+      ]
+    },
+    {
+      "vol": "Threshold intervals",
+      "int": "Hard",
+      "sessions": [
+        {"type": "1000m repeats", "desc": "4–5 × 1000m at hard-sustainable effort. 3–4 min rest.", "note": "Build toward your target 8. Once weekly."},
+        {"type": "Race pace work", "desc": "3 × 1000m at target race pace. Full recovery.", "note": "Separate session."},
+        {"type": "Lactate tolerance", "desc": "2 × 20 min tempo. Hold uncomfortable but sustainable effort.", "note": "Builds your threshold ceiling."},
+        {"type": "Gym", "desc": "Power maintenance. Reduce volume. Keep rotational strength.", "note": "1–2× per week."}
+      ]
+    },
+    {
+      "vol": "8 × 1000m race prep",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Full target set", "desc": "8 × 1000m at race pace. Full 4–5 min recovery.", "note": "Once weekly. This is race simulation."},
+        {"type": "Speed sets", "desc": "6 × 300m at faster than race pace. Sharpen the top end.", "note": "Mid-week."},
+        {"type": "Aerobic maintenance", "desc": "Easy 45 min paddle. Keep the engine warm.", "note": "Recovery pace only."},
+        {"type": "Starts", "desc": "Practise race starts, first 200m surges, drafting position.", "note": "Tactical as physical."}
+      ]
+    },
+    {
+      "vol": "Taper & sharpen",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Short sharp set", "desc": "4 × 1000m at race pace. Stop feeling tired, stay sharp.", "note": "Once only."},
+        {"type": "Speed", "desc": "4 × 300m fast. Maintain neuromuscular firing.", "note": "Day before rest."},
+        {"type": "Boat prep", "desc": "Check equipment. Paddle a course lap easy.", "note": "Mental confidence."},
+        {"type": "Rest", "desc": "Rest is performance. Two easy days before comp.", "note": "Serious about this."}
+      ]
+    }
+  ],
+  "board": [
+    {
+      "vol": "Maintenance, strength",
+      "int": "Low",
+      "sessions": [
+        {"type": "Gym", "desc": "Shoulder stability, core, pulling strength. Fundamentals.", "note": "2× per week."},
+        {"type": "Easy paddle", "desc": "Flat water cruise, 30–40 min. Technique focus.", "note": "1× per week."},
+        {"type": "Surfing", "desc": "Use surf to work wave reading and balance.", "note": "Good cross-training for board paddlers."},
+        {"type": "Cross-train", "desc": "Bike, swim, run. Keeps aerobic base without paddle load.", "note": ""}
+      ]
+    },
+    {
+      "vol": "Aerobic base, long distance",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Long board paddle", "desc": "45–60 min continuous at comfortable effort.", "note": "Weekly. Builds your aerobic engine."},
+        {"type": "Interval sets", "desc": "6 × 2 min on 1 min off. Moderate effort.", "note": "Builds capacity for harder work ahead."},
+        {"type": "Technical", "desc": "Prone paddling mechanics, turning, wave catch efficiency.", "note": "Every session."},
+        {"type": "Gym", "desc": "Lat and rotational power. No max effort yet.", "note": "2× per week."}
+      ]
+    },
+    {
+      "vol": "Threshold, rep work",
+      "int": "Hard",
+      "sessions": [
+        {"type": "600m repeats", "desc": "4–5 × 600m at hard effort. 3 min rest.", "note": "Build toward 8 reps. Once weekly."},
+        {"type": "Race pace", "desc": "3 × 600m at target race effort. Judge pace.", "note": "Separate session. Learn your pace."},
+        {"type": "Long paddle", "desc": "Continuous 3km at moderate pace.", "note": "Maintains aerobic ceiling."},
+        {"type": "Gym", "desc": "Power phase. Jump, explosive pull. Reduce volume.", "note": "2× per week."}
+      ]
+    },
+    {
+      "vol": "8 × 600m, race simulation",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Full target set", "desc": "8 × 600m at race pace. 3–4 min full recovery.", "note": "Once weekly. Race intensity only."},
+        {"type": "Short speed", "desc": "6 × 200m at sprint pace. Faster than race speed.", "note": "Maintains top end."},
+        {"type": "Technical", "desc": "Race turn practice. Buoy rounding, water starts.", "note": "Tactical."},
+        {"type": "Easy aerobic", "desc": "30 min easy. Keep the engine ticking over.", "note": "Active recovery between hard days."}
+      ]
+    },
+    {
+      "vol": "Taper & sharpen",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Short set", "desc": "4 × 600m race pace. Not 8, just 4. Stay fresh.", "note": "Once."},
+        {"type": "Speed", "desc": "4 × 200m fast. Maintain the sharpness.", "note": ""},
+        {"type": "Gear check", "desc": "Board, fins, leash. Easy course paddle.", "note": "Comfort and confidence."},
+        {"type": "Rest", "desc": "Two full days before race. Eat, sleep, stretch.", "note": ""}
+      ]
+    }
+  ],
+  "allround": [
+    {
+      "vol": "Skills across disciplines",
+      "int": "Low",
+      "sessions": [
+        {"type": "Weekly rotation", "desc": "One session each: ocean swim, beach run, gym. Variety is the goal.", "note": "No specialisation yet."},
+        {"type": "Gym", "desc": "Full body strength. Don't neglect the gym in offseason - this is when you build it.", "note": "2× per week."},
+        {"type": "Recovery", "desc": "Treat this phase seriously. Legs and shoulders need genuine rest.", "note": "Less is more right now."},
+        {"type": "Awards", "desc": "Complete JLA/LA if not done. Get cert requirements out of the way.", "note": "Admin beats training sometimes."}
+      ]
+    },
+    {
+      "vol": "Build all three engines",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Swim volume", "desc": "Long aerobic ocean swims weekly. 2km+ continuous.", "note": "Non-negotiable for iron athletes."},
+        {"type": "Paddle volume", "desc": "Long ski or board paddle weekly. 60+ min.", "note": "Alternate ski and board across the week."},
+        {"type": "Beach runs", "desc": "Easy soft sand aerobic runs. 30–45 min.", "note": "Legs need aerobic base too."},
+        {"type": "Gym", "desc": "General strength - pull, push, hinge, squat. No event specialisation yet.", "note": "2× per week."}
+      ]
+    },
+    {
+      "vol": "Event-specific intensity",
+      "int": "Hard",
+      "sessions": [
+        {"type": "Swim threshold", "desc": "4–5 × 400m at CSS. Builds your worst leg.", "note": "Iron athletes often lose races in the water."},
+        {"type": "Paddle reps", "desc": "4–5 × 1000m ski or 4–5 × 600m board.", "note": "One craft per session. Alternate across weeks."},
+        {"type": "Sprint work", "desc": "6 × 90m soft sand. Legs need speed-specific work too.", "note": "Beach sprint is easy to neglect in iron prep."},
+        {"type": "Combo session", "desc": "Swim-to-paddle transition practice. The change is where time is won/lost.", "note": "1× per week."}
+      ]
+    },
+    {
+      "vol": "Race simulation, specific",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Iron simulation", "desc": "Swim-board/ski-beach run sequence. Not full distance, half of each.", "note": "Practise transitions, logistics, mental model."},
+        {"type": "Event peak sets", "desc": "Full swim target set one week, full paddle next.", "note": "Can't peak everything every week - rotate which event you hammer."},
+        {"type": "Beach sprint repeats", "desc": "Work toward 8–10 × 90m. Legs need to be ready even after swim and paddle.", "note": ""},
+        {"type": "Recovery week", "desc": "Every 3rd week: reduce volume by 40%. Iron athletes accumulate fatigue.", "note": "Non-negotiable."}
+      ]
+    },
+    {
+      "vol": "Taper by event priority",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Priority event", "desc": "Sharpen your strongest scoring event in final week. Do a half-version of the full set.", "note": "Know which event matters most for your team's points."},
+        {"type": "Touch all events", "desc": "Short activation session in each discipline. Not performance - just pattern.", "note": "One quality rep in each modality."},
+        {"type": "Transitions", "desc": "Run the iron race in your head. Equipment, changeover, timing.", "note": "Most iron medals are won in transition."},
+        {"type": "Rest", "desc": "Two full days. For iron athletes this is even more important.", "note": "You have three engines to arrive fresh with."}
+      ]
+    }
+  ],
+  "pool": [
+    {
+      "vol": "Technique, drill work",
+      "int": "Low",
+      "sessions": [
+        {"type": "Drill sets", "desc": "Kick sets, pull buoy, catch drills. 2km per session.", "note": "2× per week. Quality over metres."},
+        {"type": "Event familiarisation", "desc": "Practise tube and belt rescue sequences. Slow and deliberate.", "note": "You should know these perfectly before you add speed."},
+        {"type": "Gym", "desc": "Shoulder health, core. Rotator cuff priority.", "note": "2× per week."},
+        {"type": "Fin work", "desc": "Easy kick-only sets with fins. Develop feel.", "note": "1× per week."}
+      ]
+    },
+    {
+      "vol": "Aerobic volume, event work",
+      "int": "Moderate",
+      "sessions": [
+        {"type": "Main sets", "desc": "200s and 400s at moderate pace. High volume, low rest.", "note": "2× per week."},
+        {"type": "Event simulation", "desc": "Practise full rescue sequences at race effort - not just components.", "note": "Timing starts to matter here."},
+        {"type": "Fin sets", "desc": "8–10 × 50m fins at moderate effort. Build fin speed.", "note": "Once weekly."},
+        {"type": "Mani/medley build", "desc": "200m manikin carry reps. 400m rescue medley practice sets.", "note": "Core pool rescue events need repetition."}
+      ]
+    },
+    {
+      "vol": "Threshold, race-pace exposure",
+      "int": "Hard",
+      "sessions": [
+        {"type": "Short race-pace reps", "desc": "8–10 × 50m at faster than race pace. Full rest.", "note": "2× per week."},
+        {"type": "200m repeats", "desc": "6 × 200m at threshold effort. 30 sec rest.", "note": "Build the specific endurance."},
+        {"type": "Event sets", "desc": "Full tube rescue sequence × 4–5 reps. Race speed.", "note": "Errors at this pace get ironed out now."},
+        {"type": "Fin speed", "desc": "6 × 50m fins at sprint pace. Also 4 × 100m fins aerobic.", "note": "Fin events need both speed and endurance."}
+      ]
+    },
+    {
+      "vol": "12-rep target sets",
+      "int": "Very hard",
+      "sessions": [
+        {"type": "Full sprint set", "desc": "12 × 50m at race pace. Full rest between (60 sec+).", "note": "Once weekly. This is your race load."},
+        {"type": "100–200m reps", "desc": "6 × 100m + 4 × 200m across the week. Pace specific.", "note": "Pool rescue spans 50–200m - you need speed at all distances."},
+        {"type": "Event simulation", "desc": "Full heat sequence for each event. Treat it like a race.", "note": "Start block, gun, full effort."},
+        {"type": "Fin sprint", "desc": "8 × 50m fins at race pace. Full rest.", "note": "If you are pool 1 or pool 2 position."}
+      ]
+    },
+    {
+      "vol": "Taper & race sharpness",
+      "int": "Race quality",
+      "sessions": [
+        {"type": "Sharpener set", "desc": "6 × 50m race pace. Not 12. Stay fresh and sharp.", "note": "Once only."},
+        {"type": "Event dry run", "desc": "Full rescue sequence once per event at race effort.", "note": "Pattern should be automatic."},
+        {"type": "Starts and turns", "desc": "10–15 min on start block reaction, turns, touch mechanics.", "note": "Hundredths matter."},
+        {"type": "Rest", "desc": "Full rest day before comp. Light activation morning of race.", "note": "Trust everything you've done."}
+      ]
+    }
+  ]
+}
