@@ -11,16 +11,16 @@ const phases = [
     focus:'Maximise energy pools, Tap & Prep', intensity:95, volume:25 },
 ];
 
-const phaseColors = ['#888780','#185FA5','#3B6D11','#854F0B','#993C1D'];
-const phaseBg    = ['#F1EFE8','#E6F1FB','#EAF3DE','#FAEEDA','#FAECE7'];
+const phaseColors = ['#8B7355','#1166A3','#1E6830','#AA5E00','#B02E14'];
+const phaseBg    = ['#F5EDD8','#D6EFF8','#D2EDD8','#FAE8CA','#FAE0D6'];
 
 const athletes = [
-  { id:'sprint',   cls:'a-sprint',   label:'Beach sprinter', name:'Beach sprinter',  target:'12 × 90m soft sand', color:'#534AB7', bg:'#EEEDFE' },
-  { id:'swim',     cls:'a-swim',     label:'Ocean swimmer',  name:'Ocean swimmer',   target:'8 × 400m open water', color:'#0F6E56', bg:'#E1F5EE' },
-  { id:'ski',      cls:'a-ski',      label:'Surfski',        name:'Surfski paddler', target:'8 × 1000m sprints',   color:'#185FA5', bg:'#E6F1FB' },
-  { id:'board',    cls:'a-board',    label:'Board paddler',  name:'Board paddler',   target:'8 × 600m sprints',    color:'#854F0B', bg:'#FAEEDA' },
-  { id:'allround', cls:'a-allround', label:'All-rounder',    name:'All-rounder',     target:'Multi-discipline',     color:'#993C1D', bg:'#FAECE7' },
-  { id:'pool',     cls:'a-pool',     label:'Pool rescue',    name:'Pool rescue',     target:'12 × 50–200m sprints', color:'#3B6D11', bg:'#EAF3DE' },
+  { id:'sprint',   cls:'a-sprint',   label:'Beach sprinter', name:'Beach sprinter',  target:'12 × 90m soft sand', color:'#4E45B2', bg:'#E9E8FD' },
+  { id:'swim',     cls:'a-swim',     label:'Ocean swimmer',  name:'Ocean swimmer',   target:'8 × 400m open water', color:'#0A8AAD', bg:'#D2F0F7' },
+  { id:'ski',      cls:'a-ski',      label:'Surfski',        name:'Surfski paddler', target:'8 × 1000m sprints',   color:'#1166A3', bg:'#D6EFF8' },
+  { id:'board',    cls:'a-board',    label:'Board paddler',  name:'Board paddler',   target:'8 × 600m sprints',    color:'#AA5E00', bg:'#FAE8CA' },
+  { id:'allround', cls:'a-allround', label:'All-rounder',    name:'All-rounder',     target:'Multi-discipline',     color:'#B02E14', bg:'#FAE0D6' },
+  { id:'pool',     cls:'a-pool',     label:'Pool rescue',    name:'Pool rescue',     target:'12 × 50–200m sprints', color:'#1E6830', bg:'#D2EDD8' },
 ];
 
 // For very small static site, data may be embedded on the page.

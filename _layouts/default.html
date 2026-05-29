@@ -6,12 +6,34 @@
   <title>{{ page.title | default: site.title }}</title>
   <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/images/favicon.svg">
   <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <svg class="logo-wave" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 14 Q8 6 14 10 Q20 14 26 6 Q32 -2 38 4" stroke="rgba(255,255,255,0.95)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M2 22 Q8 14 14 18 Q20 22 26 14 Q32 6 38 12" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M2 30 Q8 22 14 26 Q20 30 26 22 Q32 14 38 20" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div>
+          <div class="site-title">Clifton LWC</div>
+          <div class="site-subtitle">Training Blueprint</div>
+        </div>
+      </div>
+      <div class="header-meta">Lifesaving Worlds 2026</div>
+    </div>
+    <div class="header-wave" aria-hidden="true">
+      <svg viewBox="0 0 1200 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0 Q150 28 300 14 Q450 0 600 14 Q750 28 900 14 Q1050 0 1200 14 L1200 28 L0 28 Z" fill="#F5EDD8"/>
+      </svg>
+    </div>
+  </header>
   {{ content }}
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
   <script>window.baseurl = "{{ site.baseurl }}";</script>
   <script src="{{ site.baseurl }}/assets/js/app.js"></script>
 </body>
