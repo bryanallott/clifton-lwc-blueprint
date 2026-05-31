@@ -1,0 +1,321 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Barlow',sans-serif}
+.wrap{padding:1.5rem 0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem}
+.tab{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.tab:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.tab.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.page{display:none}
+.page.active{display:block}
+.athlete-header{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.athlete-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:42px;letter-spacing:-.01em;color:var(--color-text-primary);line-height:1;margin-bottom:.5rem}
+.athlete-sub{font-size:14px;color:var(--color-text-secondary);line-height:1.6;max-width:540px}
+.comp-load{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1.75rem}
+.comp-load-header{background:var(--color-background-secondary);padding:.75rem 1.25rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.comp-load-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-secondary)}
+.comp-load-body{padding:1rem 1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.comp-load-body.single{grid-template-columns:1fr}
+.gender-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.6rem}
+.event-row{display:flex;align-items:baseline;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.event-row:last-child{border-bottom:none}
+.event-name{font-size:13px;color:var(--color-text-primary);font-weight:500}
+.event-load{display:flex;align-items:center;gap:6px}
+.race-pips{display:flex;gap:3px;align-items:center}
+.pip{width:8px;height:8px;border-radius:50%;background:var(--color-border-secondary)}
+.pip.heat{background:#888780}
+.pip.final{background:#1D9E75}
+.load-note{font-size:11px;color:var(--color-text-secondary)}
+.comp-narrative{padding:.85rem 1.25rem;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.comp-narrative strong{color:var(--color-text-primary);font-weight:500}
+.pip-legend{display:flex;gap:12px;padding:.6rem 1.25rem;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:2rem}
+.phase{padding:1rem;border-right:0.5px solid var(--color-border-tertiary)}
+.phase:last-child{border-right:none}
+.phase-num{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.4rem}
+.phase-vol{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--color-text-primary);line-height:1.2;margin-bottom:.3rem}
+.phase-int{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;margin-top:.4rem}
+.int-low{background:#E1F5EE;color:#0F6E56}
+.int-mod{background:#FAEEDA;color:#854F0B}
+.int-hard{background:#FAECE7;color:#993C1D}
+.int-vhard{background:#FCEBEB;color:#A32D2D}
+.int-race{background:#EEEDFE;color:#534AB7}
+.detail-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:2rem}
+.detail-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;border:0.5px solid var(--color-border-tertiary)}
+.detail-phase-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.session{margin-bottom:.75rem}
+.session:last-child{margin-bottom:0}
+.session-type{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:var(--color-text-primary);text-transform:uppercase;letter-spacing:.04em}
+.session-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.45;margin-top:2px}
+.session-note{font-size:11px;color:var(--color-text-secondary);font-style:italic;margin-top:2px;opacity:.75}
+.journey{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.journey-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.75rem}
+.journey-text{font-size:14px;color:var(--color-text-primary);line-height:1.7}
+@media(max-width:600px){.phases,.detail-grid{grid-template-columns:1fr}.phase{border-right:none;border-bottom:0.5px solid var(--color-border-tertiary)}.comp-load-body{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<h2 style="position:absolute;left:-9999px" class="sr-only">Clifton LWC 2026 Athlete Training Blueprint — six discipline summaries with competition load</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('sprint',this)">Beach Sprint &amp; Flags</button>
+  <button class="tab" onclick="show('swim',this)">Ocean Swimmer</button>
+  <button class="tab" onclick="show('ski',this)">Ski Paddler</button>
+  <button class="tab" onclick="show('board',this)">Board Paddler</button>
+  <button class="tab" onclick="show('pool',this)">Pool Rescue</button>
+  <button class="tab" onclick="show('allround',this)">Iron / All-round</button>
+</div>
+
+<!-- SPRINT -->
+<div id="sprint" class="page active">
+  <div class="athlete-header">
+    <div class="athlete-title">Beach Sprint &amp; Flags</div>
+    <div class="athlete-sub">A power athlete in a 90m world. Everything in this program is built toward one thing — leaving the start faster and hitting the line harder than last time.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Beach Sprint</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Flags</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">12 to semi · 20 to win</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Beach Sprint</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Flags</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">12 to semi · 20 to win</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">Sprint athletes need to be ready to race <strong>multiple times per day</strong> across individual and relay events. Beach Flags is the outlier — a winner at LWC has run somewhere between <strong>12 and 20 rounds</strong>, which is a completely different fatigue profile to the sprint. The relay adds a team element and another race day commitment. Coaches should expect <strong>at least 4 efforts per competition session</strong> for athletes in both events, and flag athletes progressing deep into the draw need active recovery and mental composure between rounds — not just physical freshness.</div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 is honest rest dressed up as cross-training — the body needs a break after the season. Phase 2 builds the aerobic platform that most sprint athletes skip, which is the mistake. Soft sand running and posterior chain work here mean Phase 3 threshold work actually sticks. By Phase 4 you're running 90m repeats at race pace with full recovery, building toward 12 reps, sharpening starts and turning mechanics. Phase 5 cuts the volume in half, keeps the quality, and trusts the work that's already been done.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Cross-train freely</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Build aerobic base</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Threshold intensity</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">Race pace conditioning</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper &amp; peak</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Strength foundation — hip hinge, squat, single-leg work</div><div class="session-note">2× per week. No max effort.</div></div><div class="session"><div class="session-type">Beach/run</div><div class="session-desc">Easy jogs on soft sand, 20–30 min</div><div class="session-note">Conversational effort.</div></div><div class="session"><div class="session-type">Recovery</div><div class="session-desc">Swim or cycle. Nothing sport-specific.</div></div><div class="session"><div class="session-type">Mobility</div><div class="session-desc">Ankle and hip work. Hamstring loading under fatigue.</div><div class="session-note">Daily 10 min.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Progressive overload — posterior chain. RDLs, box jumps, sled.</div><div class="session-note">3× per week.</div></div><div class="session"><div class="session-type">Soft sand</div><div class="session-desc">Easy aerobic runs 30–50 min. Short hill repeats.</div><div class="session-note">Never threshold yet.</div></div><div class="session"><div class="session-type">Speed work</div><div class="session-desc">Starts and acceleration drills, 30–40m. Mechanics not time.</div><div class="session-note">1× per week.</div></div><div class="session"><div class="session-type">Conditioning</div><div class="session-desc">Aerobic intervals — flags circuits, 400–800m tempo.</div><div class="session-note">RPE 6–7 max.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">Soft sand tempo</div><div class="session-desc">6–8 × 60m at 90% effort. Full rest between.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Speed endurance</div><div class="session-desc">3–4 × 90m at near-race pace. 4 min recovery.</div><div class="session-note">1× per week only.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Maintain strength, reduce volume. Power focus.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Race sim</div><div class="session-desc">90m with start and turn sequence. Timed runs.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Sprint repeats</div><div class="session-desc">8–10 × 90m at race pace. Full recovery — 5 min between.</div><div class="session-note">Target is 12 reps.</div></div><div class="session"><div class="session-type">Speed sessions</div><div class="session-desc">Flags starts, 15m acceleration, false-start simulation.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Power maintenance only. No DOMS into race week.</div><div class="session-note">1× per week.</div></div><div class="session"><div class="session-type">Technical</div><div class="session-desc">Turning mechanics, sand reading, heat race simulation.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Sharpener</div><div class="session-desc">4–5 × 90m race pace, full rest. Fresh not smashed.</div><div class="session-note">Once in comp week.</div></div><div class="session"><div class="session-type">Activation</div><div class="session-desc">Short burst starts, flags practice. 15–20 min total.</div><div class="session-note">Daily pre-comp morning.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Sleep and nutrition now do more work than training.</div><div class="session-note">Trust the build.</div></div><div class="session"><div class="session-type">Race prep</div><div class="session-desc">Visualise heats. Walk the course. Understand the draw.</div></div></div>
+  </div>
+</div>
+
+<!-- SWIM -->
+<div id="swim" class="page">
+  <div class="athlete-header">
+    <div class="athlete-title">Ocean Swimmer</div>
+    <div class="athlete-sub">The ocean swim is often where races are decided — or given away. This program builds from easy technique work into progressively harder open-water volume, peaking at 8 × 400m before the taper brings it back sharp.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Ocean Swim</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Ocean Swim</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">2 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay (Mixed)</span><div class="event-load"><div class="race-pips"><div class="pip final"></div></div><span class="load-note">1 race</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">On paper this looks like the lightest individual load — 3 swims, a relay on top. But ocean swims at LWC are not pool swims. Conditions in PE in November can be serious, and a hard 3-race campaign in real ocean leaves athletes far more depleted than the numbers suggest. Female athletes nominated for the mixed ocean relay face a <strong>third event commitment</strong> on top of individual and team swims. <strong>Athletes who underestimate ocean fatigue get found out in finals.</strong></div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 is about feel — drills, easy ocean swims, shoulder stability work. Nothing is timed yet. Phase 2 introduces real volume, long open-water sessions of 1500–3000m and aerobic pool pyramid sets. Sighting and stroke tempo become habits. Phase 3 brings CSS threshold sets and race-pace repeats. Phase 4 is the business: 8 × 400m open water at goal pace, once a week. Phase 5 halves the volume, keeps the quality, and adds a short open-water session to sight the comp course if possible.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Active recovery, skills</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Aerobic volume build</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Threshold sets</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">8 × 400m progression</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper &amp; sharpen</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Pool</div><div class="session-desc">Technique focus. Drill sets, catch work. 2–3km easy.</div><div class="session-note">Feel the stroke, not the clock.</div></div><div class="session"><div class="session-type">Ocean</div><div class="session-desc">Easy beach swims, 800–1200m.</div><div class="session-note">1× per week if accessible.</div></div><div class="session"><div class="session-type">Strength</div><div class="session-desc">Lat pull, shoulder stability, rotator cuff.</div></div><div class="session"><div class="session-type">Cross-train</div><div class="session-desc">Anything non-swimming. Keep body moving, mind fresh.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Long ocean</div><div class="session-desc">Steady 1500–3000m in open water. Navigation practice.</div><div class="session-note">Build distance week on week.</div></div><div class="session"><div class="session-type">Pool sets</div><div class="session-desc">Aerobic pyramid — 200, 400, 800, 400, 200. Low rest.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Technique</div><div class="session-desc">Sighting drills, catch-up drill, open water stroke tempo.</div></div><div class="session"><div class="session-type">Strength</div><div class="session-desc">Pull-up progressions, core, hip flexor loading.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">Threshold</div><div class="session-desc">4–6 × 400m at CSS pace. 30–45 sec rest.</div><div class="session-note">1–2× per week.</div></div><div class="session"><div class="session-type">OW tempo</div><div class="session-desc">Continuous 2–3km at hard-sustainable effort.</div><div class="session-note">Once weekly.</div></div><div class="session"><div class="session-type">Race-pace reps</div><div class="session-desc">8 × 200m at target 400m pace. Bridges toward Phase 4.</div></div><div class="session"><div class="session-type">Strength</div><div class="session-desc">Maintain pulling strength. No new movements.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Full race set</div><div class="session-desc">8 × 400m open water at race-goal pace.</div><div class="session-note">Once weekly. Full week to recover.</div></div><div class="session"><div class="session-type">Speed work</div><div class="session-desc">6 × 100m at faster than race pace.</div></div><div class="session"><div class="session-type">Long swim</div><div class="session-desc">Single continuous 2–3km. Maintain aerobic ceiling.</div></div><div class="session"><div class="session-type">Recovery swim</div><div class="session-desc">800m easy after hard days.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Shortened set</div><div class="session-desc">4–5 × 400m race pace. Reduce volume, keep speed.</div><div class="session-note">Once only in taper.</div></div><div class="session"><div class="session-type">Speed</div><div class="session-desc">4 × 100m fast. Keep neuromuscular sharpness.</div></div><div class="session"><div class="session-type">Ocean prep</div><div class="session-desc">Short open-water session. Sight the comp course if possible.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Two full rest days before comp.</div></div></div>
+  </div>
+</div>
+
+<!-- SKI -->
+<div id="ski" class="page">
+  <div class="athlete-header">
+    <div class="athlete-title">Ski Paddler</div>
+    <div class="athlete-sub">Ocean ski rewards aerobic engine size, paddle efficiency, and the ability to hold pace through whatever the ocean throws at you. The program builds a long aerobic base, moves into threshold intervals, then peaks at 8 × 1000m before tapering sharp.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Ocean Ski</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Ocean Ski</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">Ski races at LWC are long and technically demanding — ocean conditions, surf launches, and buoy rounding all factor in. Junior males face <strong>4 races to get through the draw</strong>; junior females, 3. That's a meaningful difference in total paddling volume across the championship. The individual nature of ski means every race counts and there's no teammate to compensate. <strong>Athletes need to produce race-quality effort on consecutive days</strong>, which is exactly why Phase 4 builds toward 8 × 1000m — it simulates the cumulative load, not just a single race peak.</div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 is off the paddle — gym work for shoulder health and thoracic rotation, easy flat-water cruises, cycling for aerobic base without loading the shoulders. Phase 2 introduces long aerobic paddles (60–90 min zone 2) and interval work, always with a stroke-efficiency focus. Phase 3 moves into 1000m threshold repeats. Phase 4 is the full 8 × 1000m at race pace — once a week, full recovery — with speed sets mid-week and start practice. Phase 5 cuts to 4 × 1000m, maintains sharpness with 300m speed efforts, and ends with two genuine easy days.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Off-paddle, base movement</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Long paddle base</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Threshold intervals</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">8 × 1000m race prep</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper &amp; sharpen</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Lat, rotator cuff, core. Paddling posture work.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Easy paddle</div><div class="session-desc">Flat water, casual. 45–60 min. No intervals.</div></div><div class="session"><div class="session-type">Cross-train</div><div class="session-desc">Cycling for aerobic base without shoulder load.</div></div><div class="session"><div class="session-type">Mobility</div><div class="session-desc">Thoracic rotation, hip flexor, shoulder CARs.</div><div class="session-note">10 min daily.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Long aerobic</div><div class="session-desc">60–90 min continuous. Z2 — hold a conversation.</div><div class="session-note">~10% increase per week.</div></div><div class="session"><div class="session-type">Intervals</div><div class="session-desc">6–8 × 3 min moderate effort, 2 min easy.</div></div><div class="session"><div class="session-type">Technical</div><div class="session-desc">Stroke efficiency, catch timing, boat trim.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Paddle-specific pull work, rotational power.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">1000m repeats</div><div class="session-desc">4–5 × 1000m at hard-sustainable. 3–4 min rest.</div><div class="session-note">Build toward 8. Once weekly.</div></div><div class="session"><div class="session-type">Race pace</div><div class="session-desc">3 × 1000m at target race pace. Full recovery.</div></div><div class="session"><div class="session-type">Lactate work</div><div class="session-desc">2 × 20 min tempo. Uncomfortable but sustainable.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Power maintenance. Keep rotational strength.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Full target set</div><div class="session-desc">8 × 1000m at race pace. Full 4–5 min recovery.</div><div class="session-note">Once weekly.</div></div><div class="session"><div class="session-type">Speed sets</div><div class="session-desc">6 × 300m at faster than race pace.</div><div class="session-note">Mid-week.</div></div><div class="session"><div class="session-type">Aerobic maint.</div><div class="session-desc">Easy 45 min paddle. Keep the engine warm.</div></div><div class="session"><div class="session-type">Starts</div><div class="session-desc">Race starts, first 200m surges, drafting position.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Short sharp set</div><div class="session-desc">4 × 1000m at race pace.</div><div class="session-note">Once only.</div></div><div class="session"><div class="session-type">Speed</div><div class="session-desc">4 × 300m fast. Maintain neuromuscular firing.</div></div><div class="session"><div class="session-type">Boat prep</div><div class="session-desc">Check equipment. Paddle a course lap easy.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Two easy days before comp. Rest is performance.</div></div></div>
+  </div>
+</div>
+
+<!-- BOARD -->
+<div id="board" class="page">
+  <div class="athlete-header">
+    <div class="athlete-title">Board Paddler</div>
+    <div class="athlete-sub">Prone board rewards pulling strength, wave intelligence, and the ability to hold race pace over 600m efforts. This program builds from off-board conditioning through threshold rep work, up to 8 × 600m race simulations.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Board Race</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races</span></div></div>
+        <div class="event-row"><span class="event-name">Board Rescue</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Board Race</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races</span></div></div>
+        <div class="event-row"><span class="event-name">Board Rescue</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">Board paddlers carry a <strong>double event commitment</strong> — individual race and rescue — with different pacing demands for each. Combined, athletes in both events face <strong>7 starts across the campaign</strong>, most of them in open surf. The A &amp; B final structure in rescue means even teams that miss the A final race again — there's no sitting out. <strong>Cumulative paddling volume at LWC will exceed any single training week</strong>, and coaches should plan genuine recovery between event days, not just between sessions.</div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 keeps the board mostly in the shed — shoulder stability, easy flat-water technique paddles, and surfing as honest cross-training for wave reading and balance. Phase 2 builds the aerobic engine with long continuous paddles and interval sets, technical focus every session. Phase 3 introduces 600m repeats, building from 4 reps toward 8. Phase 4 is the full 8 × 600m — once weekly — with short speed work and race turn practice. Phase 5 cuts to 4 reps, runs 4 × 200m speed efforts, checks the gear, and gets two full days of rest.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Maintenance, strength</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Aerobic base, long distance</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Threshold, rep work</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">8 × 600m race simulation</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper &amp; sharpen</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Shoulder stability, core, pulling strength.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Easy paddle</div><div class="session-desc">Flat water cruise, 30–40 min. Technique focus.</div></div><div class="session"><div class="session-type">Surfing</div><div class="session-desc">Wave reading and balance. Good cross-training.</div></div><div class="session"><div class="session-type">Cross-train</div><div class="session-desc">Bike, swim, run. Aerobic base without paddle load.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Long paddle</div><div class="session-desc">45–60 min continuous at comfortable effort.</div><div class="session-note">Weekly. Builds aerobic engine.</div></div><div class="session"><div class="session-type">Intervals</div><div class="session-desc">6 × 2 min on, 1 min off. Moderate effort.</div></div><div class="session"><div class="session-type">Technical</div><div class="session-desc">Prone mechanics, turning, wave catch efficiency.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Lat and rotational power. No max effort yet.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">600m repeats</div><div class="session-desc">4–5 × 600m at hard effort. 3 min rest.</div><div class="session-note">Build toward 8 reps.</div></div><div class="session"><div class="session-type">Race pace</div><div class="session-desc">3 × 600m at target race effort. Learn your pace.</div></div><div class="session"><div class="session-type">Long paddle</div><div class="session-desc">Continuous 3km at moderate pace.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Power phase — jump, explosive pull.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Full target set</div><div class="session-desc">8 × 600m at race pace. 3–4 min full recovery.</div><div class="session-note">Once weekly.</div></div><div class="session"><div class="session-type">Short speed</div><div class="session-desc">6 × 200m at sprint pace. Maintains top end.</div></div><div class="session"><div class="session-type">Technical</div><div class="session-desc">Race turns, buoy rounding, water starts.</div></div><div class="session"><div class="session-type">Easy aerobic</div><div class="session-desc">30 min easy. Keep the engine ticking over.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Short set</div><div class="session-desc">4 × 600m race pace. Not 8, just 4.</div></div><div class="session"><div class="session-type">Speed</div><div class="session-desc">4 × 200m fast. Maintain the sharpness.</div></div><div class="session"><div class="session-type">Gear check</div><div class="session-desc">Board, fins, leash. Easy course paddle.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Two full days before race. Eat, sleep, stretch.</div></div></div>
+  </div>
+</div>
+
+<!-- POOL RESCUE -->
+<div id="pool" class="page">
+  <div class="athlete-header">
+    <div class="athlete-title">Pool Rescue</div>
+    <div class="athlete-sub">Pool rescue athletes live in a world of short, explosive efforts with very little margin for error. Tube rescue, manikin events, and the rescue medley all demand technical precision at race speed — and the competition draw means they do it repeatedly across the week.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Tube Rescue</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Tube Rescue</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races · A &amp; B final</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">Pool rescue at LWC is deceptively demanding. Three races sounds manageable — but these aren't just swim races. <strong>Tube rescue is a paired event requiring synchronised execution under pressure</strong>, and mistakes in the sequence that go unnoticed in training get penalised or disqualified on the world stage. The A &amp; B final structure means no team sits out regardless of heat result — every pair races again. The training program deliberately builds to <strong>12 × 50m race-pace reps</strong> in Phase 4 because the total accumulated pool rescue effort across the draw is closer to that number than athletes expect. Technical perfection under fatigue is the whole game here, and it has to be earned in Phase 3 — <strong>errors at race pace need to be ironed out well before comp week.</strong></div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 is slow and deliberate — drill sets, event familiarisation at easy pace, shoulder health work. The rescue sequences should be known perfectly before speed is added. Phase 2 builds aerobic volume through main sets and event simulation, with fin speed introduced. The manikin carry and rescue medley get dedicated repetition here. Phase 3 is where race pace enters — short fast reps, full event sequences at speed, and fin work across multiple distances. Phase 4 is the 12 × 50m target set, full event heat simulations from the start block, and race-pace fin sprints. Phase 5 cuts volume sharply, runs a single full dry-run of each event sequence, works starts and turns for the hundredths that matter, and takes a full rest day before comp.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Technique, drill work</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Aerobic volume, event work</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Threshold, race-pace exposure</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">12-rep target sets</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper &amp; race sharpness</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Drill sets</div><div class="session-desc">Kick sets, pull buoy, catch drills. 2km per session.</div><div class="session-note">Quality over metres.</div></div><div class="session"><div class="session-type">Event familiarisation</div><div class="session-desc">Tube and belt rescue sequences. Slow and deliberate.</div><div class="session-note">Know these perfectly before adding speed.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Shoulder health, core. Rotator cuff priority.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Fin work</div><div class="session-desc">Easy kick-only sets with fins. Develop feel.</div><div class="session-note">1× per week.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Main sets</div><div class="session-desc">200s and 400s at moderate pace. High volume, low rest.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Event simulation</div><div class="session-desc">Full rescue sequences at race effort — not just components.</div><div class="session-note">Timing starts to matter here.</div></div><div class="session"><div class="session-type">Fin sets</div><div class="session-desc">8–10 × 50m fins at moderate effort.</div><div class="session-note">Once weekly.</div></div><div class="session"><div class="session-type">Mani/medley build</div><div class="session-desc">200m manikin carry reps. 400m rescue medley practice sets.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">Short race-pace reps</div><div class="session-desc">8–10 × 50m at faster than race pace. Full rest.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">200m repeats</div><div class="session-desc">6 × 200m at threshold effort. 30 sec rest.</div></div><div class="session"><div class="session-type">Event sets</div><div class="session-desc">Full tube rescue sequence × 4–5 reps at race speed.</div><div class="session-note">Errors at this pace get ironed out now.</div></div><div class="session"><div class="session-type">Fin speed</div><div class="session-desc">6 × 50m fins sprint pace. Also 4 × 100m fins aerobic.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Full sprint set</div><div class="session-desc">12 × 50m at race pace. Full rest between (60 sec+).</div><div class="session-note">Once weekly. This is your race load.</div></div><div class="session"><div class="session-type">100–200m reps</div><div class="session-desc">6 × 100m + 4 × 200m across the week. Pace specific.</div></div><div class="session"><div class="session-type">Event simulation</div><div class="session-desc">Full heat sequence for each event. Treat it like a race.</div><div class="session-note">Start block, gun, full effort.</div></div><div class="session"><div class="session-type">Fin sprint</div><div class="session-desc">8 × 50m fins at race pace. Full rest.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Sharpener set</div><div class="session-desc">6 × 50m race pace. Not 12. Stay fresh and sharp.</div><div class="session-note">Once only.</div></div><div class="session"><div class="session-type">Event dry run</div><div class="session-desc">Full rescue sequence once per event at race effort.</div><div class="session-note">Pattern should be automatic.</div></div><div class="session"><div class="session-type">Starts and turns</div><div class="session-desc">10–15 min on start block reaction, turns, touch mechanics.</div><div class="session-note">Hundredths matter.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Full rest day before comp. Light activation morning of race.</div><div class="session-note">Trust everything you've done.</div></div></div>
+  </div>
+</div>
+
+<!-- ALLROUND -->
+<div id="allround" class="page">
+  <div class="athlete-header">
+    <div class="athlete-title">Iron / All-round</div>
+    <div class="athlete-sub">Three events, three engines, one body. The Iron athlete has to swim, paddle, and sprint on the beach — often in the same day. The taper has to be genuinely smart about which event you prioritise.</div>
+  </div>
+  <div class="comp-load">
+    <div class="comp-load-header"><div class="comp-load-label">Expected Competition Load at LWC</div></div>
+    <div class="comp-load-body">
+      <div class="gender-block">
+        <div class="gender-label">Junior Male</div>
+        <div class="event-row"><span class="event-name">Board Race</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Swim</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Sprint</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+      </div>
+      <div class="gender-block">
+        <div class="gender-label">Junior Female</div>
+        <div class="event-row"><span class="event-name">Board Race</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Swim</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 races</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Sprint</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip heat"></div><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">4 · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Beach Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">3 · A &amp; B final</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay</span><div class="event-load"><div class="race-pips"><div class="pip heat"></div><div class="pip final"></div></div><span class="load-note">2 races</span></div></div>
+        <div class="event-row"><span class="event-name">Ocean Relay (Mixed)</span><div class="event-load"><div class="race-pips"><div class="pip final"></div></div><span class="load-note">1 race</span></div></div>
+      </div>
+    </div>
+    <div class="comp-narrative">A fully nominated all-round athlete is looking at <strong>up to 17–19 individual starts</strong> across the championship — more than any other discipline. No specialist at LWC carries this load. The mandatory recovery weeks in Phase 4 exist precisely because of this number. <strong>Coaches need to be deliberate about event nomination</strong> — and the Phase 5 instruction to sharpen the strongest scoring event first is not optional, it's the right call. You cannot peak everything. Transitions are where iron races are won, but the last sprint leg is where they're lost if fatigue management across the week has been poor.</div>
+    <div class="pip-legend"><div class="legend-item"><div class="pip heat"></div>Heat / round</div><div class="legend-item"><div class="pip final"></div>Final</div></div>
+  </div>
+  <div class="journey"><div class="journey-title">The journey through the phases</div><div class="journey-text">Phase 1 is a rotation — one session each of ocean swim, beach run, and gym. No event specificity yet, because rest matters more than volume here. Phase 2 builds all three engines in parallel: long ocean swims, long paddle sessions alternating ski and board, easy soft-sand running. Phase 3 introduces event-specific intensity — CSS swim sets, paddle reps, sprint work, and one swim-to-paddle transition session per week because that's where races are won or lost. Phase 4 is race simulation: iron sequences, peak sets rotated by event, beach sprint repeats toward 8–10 × 90m, and a mandatory 40% volume reduction every third week. Phase 5 is about knowing your team's points — sharpen the event that matters most, touch the others, run the race in your head, and take two full days off before you compete.</div></div>
+  <div class="phases">
+    <div class="phase"><div class="phase-num">Phase 1</div><div class="phase-vol">Skills across disciplines</div><span class="phase-int int-low">Low</span></div>
+    <div class="phase"><div class="phase-num">Phase 2</div><div class="phase-vol">Build all three engines</div><span class="phase-int int-mod">Moderate</span></div>
+    <div class="phase"><div class="phase-num">Phase 3</div><div class="phase-vol">Event-specific intensity</div><span class="phase-int int-hard">Hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 4</div><div class="phase-vol">Race simulation, specific</div><span class="phase-int int-vhard">Very hard</span></div>
+    <div class="phase"><div class="phase-num">Phase 5</div><div class="phase-vol">Taper by event priority</div><span class="phase-int int-race">Race quality</span></div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><div class="detail-phase-label">Phase 1</div><div class="session"><div class="session-type">Weekly rotation</div><div class="session-desc">One session each: ocean swim, beach run, gym.</div><div class="session-note">No specialisation yet.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Full body strength. Don't neglect the gym — this is when you build it.</div><div class="session-note">2× per week.</div></div><div class="session"><div class="session-type">Recovery</div><div class="session-desc">Legs and shoulders need genuine rest.</div><div class="session-note">Less is more right now.</div></div><div class="session"><div class="session-type">Admin</div><div class="session-desc">Complete JLA/LA if not done. Certs out of the way.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 2</div><div class="session"><div class="session-type">Swim volume</div><div class="session-desc">Long aerobic ocean swims weekly. 2km+ continuous.</div><div class="session-note">Non-negotiable for iron athletes.</div></div><div class="session"><div class="session-type">Paddle volume</div><div class="session-desc">Long ski or board paddle weekly. 60+ min.</div><div class="session-note">Alternate ski and board.</div></div><div class="session"><div class="session-type">Beach runs</div><div class="session-desc">Easy soft sand aerobic runs. 30–45 min.</div></div><div class="session"><div class="session-type">Gym</div><div class="session-desc">Pull, push, hinge, squat. No event specialisation yet.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 3</div><div class="session"><div class="session-type">Swim threshold</div><div class="session-desc">4–5 × 400m at CSS. Builds your worst leg.</div><div class="session-note">Iron athletes often lose in the water.</div></div><div class="session"><div class="session-type">Paddle reps</div><div class="session-desc">4–5 × 1000m ski or 4–5 × 600m board.</div><div class="session-note">One craft per session. Alternate.</div></div><div class="session"><div class="session-type">Sprint work</div><div class="session-desc">6 × 90m soft sand. Legs need speed-specific work too.</div></div><div class="session"><div class="session-type">Combo session</div><div class="session-desc">Swim-to-paddle transition practice.</div><div class="session-note">1× per week. Where time is won/lost.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 4</div><div class="session"><div class="session-type">Iron simulation</div><div class="session-desc">Swim-board/ski-beach run. Half distance of each.</div><div class="session-note">Transitions, logistics, mental model.</div></div><div class="session"><div class="session-type">Event peak sets</div><div class="session-desc">Full swim set one week, full paddle the next.</div><div class="session-note">Can't peak everything every week.</div></div><div class="session"><div class="session-type">Sprint repeats</div><div class="session-desc">Work toward 8–10 × 90m. Legs ready after swim and paddle.</div></div><div class="session"><div class="session-type">Recovery week</div><div class="session-desc">Every 3rd week: reduce volume by 40%.</div><div class="session-note">Non-negotiable.</div></div></div>
+    <div class="detail-card"><div class="detail-phase-label">Phase 5</div><div class="session"><div class="session-type">Priority event</div><div class="session-desc">Sharpen your strongest scoring event. Half-version of full set.</div><div class="session-note">Know which event matters for points.</div></div><div class="session"><div class="session-type">Touch all events</div><div class="session-desc">Short activation in each discipline. Pattern, not performance.</div></div><div class="session"><div class="session-type">Transitions</div><div class="session-desc">Run the iron race in your head. Equipment, changeover, timing.</div><div class="session-note">Most iron medals won in transition.</div></div><div class="session"><div class="session-type">Rest</div><div class="session-desc">Two full days. Three engines to arrive fresh with.</div></div></div>
+  </div>
+</div>
+
+</div>
+<script>
+function show(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+</script>
