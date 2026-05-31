@@ -381,6 +381,107 @@ body {
   transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Competition load ── */
+.comp-load {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.comp-load-header {
+  background: var(--color-card-alt);
+  padding: 0.55rem 1rem;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.comp-load-label {
+  font-family: var(--font-condensed);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.comp-load-body {
+  padding: 0.875rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: var(--color-card-bg);
+}
+
+.comp-gender-label {
+  font-family: var(--font-condensed);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.event-row:last-child { border-bottom: none; }
+
+.event-name { font-size: 12px; color: var(--color-text); font-weight: 500; }
+
+.event-load { display: flex; align-items: center; gap: 6px; }
+
+.race-pips { display: flex; gap: 3px; }
+
+.pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #444444;
+}
+
+.pip.heat   { background: #666660; }
+.pip.final  { background: #1D9E75; }
+.pip.bfinal { background: #BA7517; }
+
+.load-note { font-size: 10px; color: #555555; }
+
+.comp-narrative {
+  padding: 0.75rem 1rem;
+  background: var(--color-card-alt);
+  border-top: 1.5px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.comp-narrative strong { color: var(--color-text); font-weight: 600; }
+
+.pip-legend {
+  display: flex;
+  gap: 10px;
+  padding: 0.5rem 1rem;
+  border-top: 1.5px solid var(--color-border);
+  background: var(--color-card-bg);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #555555;
+}
+
+@media (max-width: 480px) {
+  .comp-load-body { grid-template-columns: 1fr; }
+}
+
 /* ── Hint ── */
 .hint {
   font-size: 13px;
