@@ -19,17 +19,23 @@ const athletes = [
     id:'sprint', cls:'a-sprint', label:'Beach sprinter', name:'Beach sprinter',
     target:'12 × 90m soft sand', color:'#8888E8', bg:'#120E28',
     compLoad: {
-      narrative: 'Sprint athletes need to be ready to race <strong>multiple times per day</strong> across individual and relay events. Beach Flags is the outlier — a winner at LWC has run between <strong>12 and 20 rounds</strong>, a very different fatigue profile to the sprint. Coaches should expect <strong>4 efforts per session minimum</strong>; flag athletes progressing deep into the draw need active recovery and composure between rounds, not just physical freshness.',
+      narrative: 'Sprint athletes need to be ready to race <strong>multiple times per day</strong> across individual and relay events. Beach Flags is the outlier - a winner at LWC has run between <strong>12 and 20 rounds</strong>, a very different fatigue profile to the sprint. Coaches should expect <strong>4 efforts per session minimum</strong>; flag athletes progressing deep into the draw need active recovery and composure between rounds, not just physical freshness. Additionally, the mixed Ocean relay and Ocean relay events could see sprinters running 3 races per heat over 30-50m including incredibly sharp turns and knee-depth wading.',
       genders: [
         { label:'Male', events:[
           { name:'Beach Sprint', pips:['heat','heat','heat','final'], note:'4 races · A &amp; B final' },
           { name:'Beach Flags',  pips:['heat','heat','heat','final'], note:'12 to semi · 20 to win' },
           { name:'Beach Relay',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Tube Rescue',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay (Mixed)',  pips:['final'], note:'1 race' },
         ]},
         { label:'Female', events:[
           { name:'Beach Sprint', pips:['heat','heat','heat','final'], note:'4 races · A &amp; B final' },
           { name:'Beach Flags',  pips:['heat','heat','heat','final'], note:'12 to semi · 20 to win' },
           { name:'Beach Relay',  pips:['heat','heat','final'],        note:'3 races · A &amp; B final' },
+          { name:'Tube Rescue',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay (Mixed)',  pips:['final'], note:'1 race' },
         ]},
       ],
     },
@@ -38,15 +44,20 @@ const athletes = [
     id:'swim', cls:'a-swim', label:'Ocean swimmer', name:'Ocean swimmer',
     target:'8 × 400m open water', color:'#3BBCD8', bg:'#041820',
     compLoad: {
-      narrative: 'On paper the lightest load — 3 swims, a relay on top. But ocean swims at LWC are not pool swims. Conditions in PE in November can be serious, and a hard 3-race campaign in real ocean leaves athletes far more depleted than numbers suggest. Female athletes in the mixed relay face a <strong>third event commitment</strong>. <strong>Athletes who underestimate ocean fatigue get found out in finals.</strong>',
+      narrative: 'On paper the lightest load - 3 swims, a relay on top. But ocean swims at LWC are not pool swims. Conditions in PE in November can be serious, and a hard 3-race campaign in real ocean leaves athletes far more depleted than numbers suggest. Female athletes in the mixed relay face a <strong>third event commitment</strong>. <strong>Athletes who underestimate ocean fatigue get found out in finals.</strong>',
       genders: [
         { label:'Male', events:[
           { name:'Ocean Swim',  pips:['heat','heat','final'], note:'3 races' },
           { name:'Ocean Relay', pips:['heat','heat','final'], note:'3 races' },
+          { name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races' },
+          { name:'Board Rescue', pips:['heat','heat','final'], note:'3 races' },
+          { name:'Ocean Relay (Mixed)', pips:['final'],               note:'1 race'  },
         ]},
         { label:'Female', events:[
           { name:'Ocean Swim',          pips:['heat','heat','final'], note:'3 races' },
           { name:'Ocean Relay',         pips:['heat','final'],        note:'2 races' },
+          { name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races' },
+          { name:'Board Rescue', pips:['heat','heat','final'], note:'3 races' },
           { name:'Ocean Relay (Mixed)', pips:['final'],               note:'1 race'  },
         ]},
       ],
@@ -56,10 +67,18 @@ const athletes = [
     id:'ski', cls:'a-ski', label:'Surfski', name:'Surfski paddler',
     target:'8 × 1000m sprints', color:'#4A9FD4', bg:'#0B1E2E',
     compLoad: {
-      narrative: 'Ski races at LWC are long and technically demanding — ocean conditions, surf launches, and buoy rounding all factor in. Males face <strong>4 races to get through the draw</strong>; females, 3. The individual nature of ski means every race counts — no teammate to compensate. <strong>Athletes need to produce race-quality effort on consecutive days</strong>, which is why Phase 4 builds toward 8 × 1000m: it simulates cumulative load, not just a single race peak.',
+      narrative: 'Ski races at LWC are long and technically demanding - ocean conditions, surf launches, and buoy rounding all factor in. Males face <strong>4 races to get through the draw</strong>; females, 3. The individual nature of ski means every race counts - no teammate to compensate. <strong>Athletes need to produce race-quality effort on consecutive days</strong>, which is why Phase 4 builds toward 8 × 1000m: it simulates cumulative load, not just a single race peak.',
       genders: [
-        { label:'Male',   events:[{ name:'Ocean Ski', pips:['heat','heat','heat','final'], note:'4 races' }] },
-        { label:'Female', events:[{ name:'Ocean Ski', pips:['heat','heat','final'],        note:'3 races' }] },
+        { label:'Male',   events:[
+          { name:'Ocean Ski', pips:['heat','heat','heat','final'], note:'4 races' },
+          { name:'Ocean Relay',  pips:['heat','heat','final'],        note:'3 races' },
+          { name:'Ocean Relay (Mixed)', pips:['final'],                      note:'1 race'  },
+        ] },
+        { label:'Female', events:[
+          { name:'Ocean Ski', pips:['heat','heat','final'],        note:'3 races' },
+          { name:'Ocean Relay',  pips:['heat','heat','final'],        note:'3 races' },
+          { name:'Ocean Relay (Mixed)', pips:['final'],                      note:'1 race'  },
+        ] },
       ],
     },
   },
@@ -67,15 +86,19 @@ const athletes = [
     id:'board', cls:'a-board', label:'Board paddler', name:'Board paddler',
     target:'8 × 600m sprints', color:'#E0A040', bg:'#231500',
     compLoad: {
-      narrative: 'Board paddlers carry a <strong>double event commitment</strong> — race and rescue — with different pacing demands for each. Athletes in both events face <strong>7 starts across the campaign</strong>, most in open surf. The A &amp; B final in rescue means no team sits out regardless of heat result. <strong>Cumulative paddling volume at LWC will exceed any single training week</strong> — plan genuine recovery between event days.',
+      narrative: 'Board paddlers carry a <strong>double event commitment</strong> - race and rescue - with different pacing demands for each. Athletes in both events face <strong>7 starts across the campaign</strong>, most in open surf. The A &amp; B final in rescue means no team sits out regardless of heat result. <strong>Cumulative paddling volume at LWC will exceed any single training week</strong> - plan genuine recovery between event days.',
       genders: [
         { label:'Male', events:[
           { name:'Board Race',   pips:['heat','heat','heat','final'], note:'4 races' },
           { name:'Board Rescue', pips:['heat','heat','final'],        note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay (Mixed)',  pips:['final'], note:'1 race' },
         ]},
         { label:'Female', events:[
           { name:'Board Race',   pips:['heat','heat','heat','final'], note:'4 races' },
           { name:'Board Rescue', pips:['heat','heat','final'],        note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Ocean Relay (Mixed)',  pips:['final'], note:'1 race' },
         ]},
       ],
     },
@@ -84,7 +107,7 @@ const athletes = [
     id:'allround', cls:'a-allround', label:'All-rounder', name:'All-rounder',
     target:'Multi-discipline', color:'#E04040', bg:'#220808',
     compLoad: {
-      narrative: 'A fully nominated all-round athlete is looking at <strong>up to 17–19 individual starts</strong> — more than any other discipline. No specialist at LWC carries this load. The mandatory recovery weeks in Phase 4 exist precisely for this reason. <strong>Coaches must be deliberate about event nomination</strong> — the Phase 5 instruction to sharpen the strongest scoring event first is not optional. You cannot peak everything. Transitions are where iron races are won; the last sprint leg is where they\'re lost if fatigue management across the week has been poor.',
+      narrative: 'A fully nominated all-round athlete is looking at <strong>up to 17–19 individual starts</strong> - more than any other discipline. No specialist at LWC carries this load. The mandatory recovery weeks in Phase 4 exist precisely for this reason. <strong>Coaches must be deliberate about event nomination</strong> - the Phase 5 instruction to sharpen the strongest scoring event first is not optional. You cannot peak everything. Transitions are where iron races are won; the last sprint leg is where they\'re lost if fatigue management across the week has been poor.',
       genders: [
         { label:'Male', events:[
           { name:'Board Race',   pips:['heat','heat','heat','final'], note:'4 races' },
@@ -111,10 +134,18 @@ const athletes = [
     id:'pool', cls:'a-pool', label:'Pool rescue', name:'Pool rescue',
     target:'12 × 50–200m sprints', color:'#5EBF8A', bg:'#0C1E12',
     compLoad: {
-      narrative: 'Pool rescue at LWC is deceptively demanding. <strong>Tube rescue is a paired event requiring synchronised execution under pressure</strong> — mistakes in sequence get penalised on the world stage. The A &amp; B final means every pair races again regardless of heat result. The program builds to <strong>12 × 50m race-pace reps</strong> in Phase 4 because total accumulated effort across the draw is closer to that number than athletes expect. <strong>Technical perfection under fatigue must be earned in Phase 3 — errors at race pace need to be ironed out well before comp week.</strong>',
+      narrative: 'Pool rescue at LWC is deceptively demanding. <strong>Tube rescue is a paired event requiring synchronised execution under pressure</strong> - mistakes in sequence get penalised on the world stage. The A &amp; B final means every pair races again regardless of heat result. The program builds to <strong>12 × 50m race-pace reps</strong> in Phase 4 because total accumulated effort across the draw is closer to that number than athletes expect. <strong>Technical perfection under fatigue must be earned in Phase 3 - errors at race pace need to be ironed out well before comp week.</strong>',
       genders: [
-        { label:'Male',   events:[{ name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races · A &amp; B final' }] },
-        { label:'Female', events:[{ name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races · A &amp; B final' }] },
+        { label:'Male',   events:[
+          { name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Pool Events Individual x6',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Pool Events Relay x4',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+        ] },
+        { label:'Female', events:[
+          { name:'Tube Rescue', pips:['heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Pool Events Individual x6',  pips:['heat','heat','final'], note:'3 races · A &amp; B final' },
+          { name:'Pool Events Relay x4',  pips:['heat','heat','heat','final'], note:'3 races · A &amp; B final' },
+        ] },
       ],
     },
   },
@@ -232,6 +263,9 @@ function render() {
   const d = (typeof window !== 'undefined' && window.data && window.data[selAthlete]) ? window.data[selAthlete][selPhase-1] : {sessions:[],vol:'',int:''};
   const pc = phaseColors[selPhase-1];
   const pb = phaseBg[selPhase-1];
+  const compLoadEl = document.getElementById('compLoadPanel');
+  if (compLoadEl) compLoadEl.innerHTML = buildCompLoad(a);
+
   const panel = document.getElementById('detailPanel');
   panel.innerHTML = `
     <div class="detail-header">
@@ -257,8 +291,7 @@ function render() {
           <div class="session-desc">${s.desc}</div>
           ${s.note?`<div class="session-note">${s.note}</div>`:''}
         </div>`).join('')}
-    </div>
-    ${buildCompLoad(a)}`;
+    </div>`;
   document.querySelector('.hint').style.display = 'none';
 }
 

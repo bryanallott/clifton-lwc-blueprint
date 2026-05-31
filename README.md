@@ -1,4 +1,4 @@
-# LWC Training Phases — Jekyll site
+# LWC Training Phases - Jekyll site
 
 This workspace has been scaffolded to serve the existing static page via Jekyll.
 
